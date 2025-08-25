@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Glass - The Unseen Path</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #1a1a1a;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 2s ease-in-out;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        body.light-mode {
+            background: #f8f8f8;
+            color: #333333;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .glass-shape {
+            position: relative;
+            font-size: 2.5em;
+            line-height: 1.8;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .line {
+            margin: 20px 0;
+            transition: all 2s ease-in-out;
+            position: relative;
+        }
+
+        .line-1 {
+            font-size: 1.8em;
+            letter-spacing: 8px;
+            margin-left: -100px;
+        }
+
+        .line-2 {
+            font-size: 1.6em;
+            letter-spacing: 6px;
+            margin-left: -50px;
+        }
+
+        .line-3 {
+            font-size: 2.2em;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        .line-4 {
+            font-size: 1.8em;
+            letter-spacing: 4px;
+            margin-left: 30px;
+        }
+
+        .line-5 {
+            font-size: 1.4em;
+            letter-spacing: 3px;
+            margin-left: 80px;
+        }
+
+        .hidden-text {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 2.5s ease-in-out;
+            position: absolute;
+            width: 100%;
+            left: 0;
+        }
+
+        .revealed .hidden-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagnant {
+            top: -120px;
+            font-size: 2.4em;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .dormant {
+            top: -60px;
+            font-size: 1.8em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .light-mode .stagnant {
+            color: #2c5aa0;
+        }
+
+        .light-mode .dormant {
+            color: #444;
+        }
+
+        .instruction {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2em;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .author {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 0.9em;
+            opacity: 0.6;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <div class="glass-shape">
+            <div class="line line-1">
+                s
+                <div class="hidden-text stagnant">"Stagnant waters,</div>
+            </div>
+            <div class="line line-2">
+                D
+                <div class="hidden-text dormant">Dormant minds.</div>
+            </div>
+            <div class="line line-3">Half-empty glasses</div>
+            <div class="line line-4">Complacent shapes</div>
+            <div class="line line-5">Time slowly passes"</div>
+        </div>
+    </div>
+    
+    <div class="instruction">Click anywhere to reveal the depths</div>
+    <div class="author">— Michael Langille, The Unseen Path</div>
+
+    <script>
+        let isRevealed = false;
+        
+        document.body.addEventListener('click', function() {
+            if (!isRevealed) {
+                document.body.classList.remove('light-mode');
+                document.querySelector('.container').classList.add('revealed');
+                document.querySelector('.instruction').style.display = 'none';
+                isRevealed = true;
+            }
+        });
+
+        // Auto-reveal after 8 seconds for recording purposes
+        setTimeout(() => {
+            if (!isRevealed) {
+                document.body.click();
+            }
+        }, 8000);
+    </script>
+</body>
+</html>
